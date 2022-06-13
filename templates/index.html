@@ -4,12 +4,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='mystyles.css') }}">
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/bulma-pro" />
     <title>Keouck</title>
 </head>
 <body>
+
+  <section class="hero is-primary is-medium">
+
+    <div class="hero-head">
     <nav class="navbar" role="navigation" aria-label="main navigation">
-      
+      <!-- <a class="navbar-item" href="{{ url_for('home') }}">
+        <p class="is-size-4 is-underlined is-family-code has-text-success"><b>Keouck.</b></p>
+      </a> -->
           <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarmain">
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
@@ -20,28 +27,47 @@
         <div id="navbarmain" class="navbar-menu">
           <div class="navbar-start">
             <a class="navbar-item" href="{{ url_for('home') }}">
-              Home
+              <p class="is-family-monospace"> Home </p>
             </a>
       
             <a class="navbar-item" href="{{ url_for('projects') }}">
-              Projects
+              <p class="is-family-monospace"> Projects</p>
             </a>
 
             <a class="navbar-item" href="{{ url_for('contact') }}">
-              Contact Me
+              <p class="is-family-monospace"> Contact Me </p>
             </a>
 
             <a class="navbar-item" href="{{ url_for('about') }}">
-              About Me
+              <p class="is-family-monospace"> About Me </p>
             </a>
 
             <a class="navbar-item" href="{{ url_for('blogs') }}">
-              My Blogs
+              <p class="is-family-monospace"> My Blogs </p>
             </a>
   
           </div>      
         </div>
     </nav>
+    </div>
+
+    <section class="hero is-primary is-medium">
+      <div class="columns is-multiline is-mobile">
+      <div class="hero-body column">
+      <p class="title pl-6">Hey there.</p>
+      <p class="subtitle pl-6">I'm Keouck, nice meeting you.</p>
+    </div>
+    
+    <div class="column card">
+      <div class="card-image">
+        <figure class="class is-4by3">
+          <img src="{{ url_for('static', filename='assets/luna.gif') }}" alt="Keouck's pfp" class="is-rounded">
+        </figure>
+      </div>
+    </div>
+    </div>
+
+    </section>
 
     <script src="{{ url_for('static',filename='index.js') }}"></script>
 

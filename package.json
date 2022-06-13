@@ -1,0 +1,32 @@
+{
+  "name": "homepage",
+  "version": "1.0.0",
+  "description": "My home on the internet!",
+  "main": "sass/mystyles.scss",
+  "scripts": {
+    "css-build": "node-sass --omit-source-map-url sass/mystyles.scss static/mystyles.css",
+    "css-watch": "npm run css-build -- --watch",
+    "start": "npm run css-watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/keouck/homepage.git"
+  },
+  "keywords": [
+    "keouck"
+  ],
+  "author": "keouck",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/keouck/homepage/issues"
+  },
+  "homepage": "https://github.com/keouck/homepage#readme",
+  "devDependencies": {
+    "bulma": "^0.9.4",
+    "node-sass": "^7.0.1"
+  },
+  "dependencies": {
+    "bulma-prefers-dark": "^0.1.0-beta.1"
+  }
+}
