@@ -66,9 +66,21 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  font-size: 200%;
+}
 
+a {
+  color: rgb(0, 0, 0); 
+  text-decoration: underline; 
 }
 
 ul {
   list-style-type: none;
+}
+
+.centred-blahaj {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5%;
 }
