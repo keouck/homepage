@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles.css') }}">
+  <title>Turing Tested.</title>
+</head>
+
+<body>
+
+  <div class="heading-text">
+    Turing Tested
+  </div><br><br>
+
+  <div class="container centred-blahaj">
+
+        <p>Hyelo! I'm Turing Tested, your local (not-so) friendly FOSS shill. However sadly, outside of the interwebs I play a character called [redacted].
+          <br>My interests mainly include FOSS, Linux and Python. Currently trying to get into competitive programming. 
+        </p>
+
+  </div>
+
+  <div class="sidebar">
+    <ul>
+      <a href="{{url_for('home')}}"><li>Home</li></a>
+      <a href="{{url_for('about')}}"><li>About</li></a>
+      <a href="{{url_for('shenanigans')}}"><li>Shenanigans</li></a>
+      <a href="{{url_for('blogs')}}"><li>Blogs</li></a>
+      <a href="{{url_for('devnull')}}"><li>/dev/null/</li></a>
+    </ul>
+  </div>
+</body>
+
+</html>

@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" type="text/css" href="styles.css">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles.css') }}">
   <title>Turing Tested.</title>
 </head>
 
@@ -38,11 +38,11 @@
 
   <div class="sidebar">
     <ul>
-      <a href="#"><li>Home</li></a>
-      <a href="about.html"><li>About</li></a>
-      <a href="shenanigans.html"><li>Shenanigans</li></a>
-      <a href="blogs.html"><li>Blogs</li></a>
-      <a href="devnull.html"><li>/dev/null/</li></a>
+      <a href="{{url_for('home')}}"><li>Home</li></a>
+      <a href="{{url_for('about')}}"><li>About</li></a>
+      <a href="{{url_for('shenanigans')}}"><li>Shenanigans</li></a>
+      <a href="{{url_for('blogs')}}"><li>Blogs</li></a>
+      <a href="{{url_for('devnull')}}"><li>/dev/null/</li></a>
     </ul>
   </div>
 </body>
