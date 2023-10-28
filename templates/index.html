@@ -1,50 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles.css') }}">
-  <title>Turing Tested.</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='index.css') }}">
+    <title>Turing Tested</title>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+        // Get all "navbar-burger" elements
+        const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+        // Add a click event on each of them
+        $navbarBurgers.forEach( el => {
+        el.addEventListener('click', () => {
+
+            // Get the target from the "data-target" attribute
+            const target = el.dataset.target;
+            const $target = document.getElementById(target);
+
+            // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+            el.classList.toggle('is-active');
+            $target.classList.toggle('is-active');
+
+        });
+        });
+
+        });
+    </script>
+
 </head>
-
 <body>
+    
+    <section class="hero is-black is-fullheight">
+        <div class="hero-head">
+          <header class="navbar">
+            <div class="container">
+              <div class="navbar-brand">
+                <a class="navbar-item "href="{{ url_for('home') }}">
+                  <img src="{{ url_for('static',filename='logo.png') }}" alt="Logo">
+                </a>
+                <span class="navbar-burger burger" data-target="navbarMenuHeroC">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </span>
+              </div>
+              <div id="navbarMenuHeroC" class="navbar-menu">
 
-  <div class="heading-text">
-    Turing Tested                   
-  </div>
+                <a class="navbar-item is-active" href="{{ url_for('home') }}">
+                  Home
+                </a>
+                <a class="navbar-item" href="{{ url_for('about') }}">
+                  About
+                </a>
+                <a class="navbar-item" href="{{ url_for('shenanigans') }}">
+                  Shenanigans
+                </a>
+                <a class="navbar-item" href="{{ url_for('blog') }}">
+                  Blog
+                </a>
+                </div>
+              </div>
+            </div>
+          </header>
+        </div>
 
-  <div class="container">
-    <h1>Look mom, I figured out CSS!</h1>
-
-    <p>G'day, myself Turing Tested and this is where I post my (almost always) half-baked experiments. </p>
-
-
-    <pre>
-      Some socials: 
-
-      <a href="https://github.com/keouck" style="color: white;">Github</a>
-      <a href="https://mas.to/@keouck " style="color: white;">Mastodon (mas.to)</a> or <a href="https://mastodon.skye.vg/@keouck" style="color: white;">Mastodon (mastodon.skye.vg)</a>
-      tilde.town: ~keouck
-      tildevarsh.in: ~keouck
-      Matrix: @slippuli:matrix.org
-      Discord: turing.tested
-
-      I go by different names on different sites.
-      </pre>
-
-  </div>
-
-  <div class="sidebar">
-    <ul>
-      <a href="{{url_for('home')}}"><li>Home</li></a>
-      <a href="{{url_for('about')}}"><li>About</li></a>
-      <a href="{{url_for('shenanigans')}}"><li>Shenanigans</li></a>
-      <a href="{{url_for('blogs')}}"><li>Blogs</li></a>
-      <a href="{{url_for('devnull')}}"><li>/dev/null/</li></a>
-    </ul>
-  </div>
+        
+        <!-- Hero content: will be in the middle -->
+        <div class="hero-body">
+          <div class="container has-text-centered">
+            <p class="title is-size-1">
+              Turing Tested
+            </p><br><br>
+            <p class="subtitle">
+                G'day, myself Turing Tested and this is where I post my (almost always) half-baked experiments.<br><br>
+                <a href="{{ url_for('about') }}" class="button is-large is-responsive">Let's go</a>
+            </p>
+          </div>
+        </div>    
+      </section>
 </body>
-
 </html>
