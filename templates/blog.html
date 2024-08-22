@@ -56,8 +56,8 @@
                   <a class="navbar-item" href="{{ url_for('about') }}">
                     About
                   </a>
-                  <a class="navbar-item" href="{{ url_for('shenanigans') }}">
-                    Shenanigans
+                  <a class="navbar-item" href="{{ url_for('projects') }}">
+                    Projects
                   </a>
                   <a class="navbar-item is-active" href="{{ url_for('blog') }}">
                     Blog
@@ -78,17 +78,17 @@
           </div>
         </div>    
 
-      <div class="columns is-mobile is-vcentered is-centered pb-6">
-      <div class="column is-half">
+      <a href="{{ url_for('degoogling_one') }}"> <div class="columns is-mobile is-vcentered is-centered pb-6">
+      <div class="column is-one-third">
         <div class="notification is-danger">
-          <p class="is-size-2">Under construction!</p><br>
-            In the meanwhile, have a Blåhaj. <br><br>
-            <figure class="image">
-                <img  class="is-rounded" style="width: 50%;" src="{{ url_for('static',filename='blahaj.gif') }}">
-              </figure>
+          <figure class="image">
+            <img style="width: 50%;" src="{{ url_for('static',filename='tinfoil.png') }}">
+          </figure>
+          <p class="is-size-2">Degoogling my life, part-1</p><br>
+            Wear your tinfoil hat bois. <br><br>
         </div>
       </div>
-      </div>
+      </div></a>
         </section>
 
         

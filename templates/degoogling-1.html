@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en" class="has-navbar-fixed-top has-background-black">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='about.css') }}">
+    <title>Turing Tested</title>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+        // Get all "navbar-burger" elements
+        const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+        // Add a click event on each of them
+        $navbarBurgers.forEach( el => {
+        el.addEventListener('click', () => {
+
+            // Get the target from the "data-target" attribute
+            const target = el.dataset.target;
+            const $target = document.getElementById(target);
+
+            // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+            el.classList.toggle('is-active');
+            $target.classList.toggle('is-active');
+
+        });
+        });
+
+        });
+    </script>
+
+</head>
+<body>
+    
+    <section class="hero is-black is-fullheight-with-navbar">
+        <div class="hero-head">
+          <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+            <div class="container">
+              <div class="navbar-brand">
+                <a class="navbar-item" href="{{ url_for('home') }}">
+                  <img src="{{ url_for('static',filename='logo.png') }}" alt="Logo">
+                </a>
+                <span class="navbar-burger burger" data-target="navbarMenuHeroC">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </span>
+              </div>
+              <div id="navbarMenuHeroC" class="navbar-menu">
+                <div class="navbar-end">
+                  <a class="navbar-item" href="{{ url_for('home') }}">
+                    Home
+                  </a>
+                  <a class="navbar-item" href="{{ url_for('about') }}">
+                    About
+                  </a>
+                  <a class="navbar-item" href="{{ url_for('projects') }}">
+                    Projects
+                  </a>
+                  <a class="navbar-item is-active" href="{{ url_for('blog') }}">
+                    Blog
+                  </a>
+                </div>
+              </div>
+            </div>
+        </nav><br><br><br>
+        
+        <div class="container has-text-centered pt-6">
+          <p class="title is-size-1 has-text-success has-text-weight-bold is-family-sans-serif ">
+            DeGoogling My Life, Part 1.
+          </p>
+        </div>
+        </div>
+
+        
+        <!-- Hero content: will be in the middle -->
+        <div class="hero-body">
+          <div class="columns is-mobile is-vcentered is-centered pb-6">
+            <div class="column is-four-fifths">
+              <div class="content is-family-code">
+                <h1 class="has-text-warning">Introduction</h1><br>
+                <p>
+                  Most of us are really deep in the Google ecosystem. It's hard not to be. There's very few good alternatives out there. I've always been big on privacy so I set up a fun little challenge for myself.
+                  Every week, I'll post a new blog about my progress and drop short tutorials on how you can follow along. This week, we're ditching Search and Youtube (sort of). I'll be leaving an honest review after the whole journey.
+                  A little disclaimer though. This blog is intended for technical people that know their way around the Linux command line. If you're a complete beginner, you might have some trouble following along.
+                </p>
+                <figure class="image">
+                  <img style="width: 20%;" src="{{ url_for('static',filename='degoogle.png') }}">
+                </figure>
+                <h1 class="has-text-warning">Search</h1><br>
+                <p>I've tried multiple search engines in the past, and none of them come close to Google Search. Be it DuckDuckGo, or Brave Search. There are no good enough alternatives.
+                  So I decided to use Whoogle. It's a privacy respecting frontend for Google Search. And as per their readme, you can get Google search results, but without any ads, JavaScript, AMP links, cookies, or IP address tracking. 
+                  That sounds pretty neat. It's self hosteable, so you know that *you* are in charge of your data. I've set up a little VM for this purpose, but you can use old computers (or even a phone!) if you have any lying around. </p>
+                <br><p>We're going to use Docker for this one. Simply pull the repo and run as follows:<br><br><pre><code class="inlinecode">docker pull benbusby/whoogle-search</code><br><code>docker run --publish 5000:5000 --detach --name whoogle-search benbusby/whoogle-search:latest</code></pre><br></p>
+                <p>Next we need to figure out the IP address of our instance. If you're hosting it on your computer, it should very simply be, <code class="inlinecode">http://127.0.0.1:5000/</code>. If you're hosting it on a separate computer inside your house, you need to figure out the private IP address of said computer and open Whoogle with the port 5000 (in our case). And if you'd like for the website to be accessible when you're not at home, you'll need to do a bit of port forwarding to get everything running. </p> 
+                <figure class="image">
+                  <img style="width: 60%;" src="{{ url_for('static',filename='whoogle.png') }}">
+                </figure>  <br>
+                <p>I'd recommend some additional configuration and fiddling around as well to make your experience better.</p>
+
+
+                <h1 class="has-text-warning">YouTube</h1><br>
+                <p> 
+                  This section is similar to search in that there's no nice independent alternatives. In fact, it's much worse. There are platforms like PeerTube and Odysee. Although I will try to use them more often now, there's no competing with the youtube library.
+                  Invidious is another privacy respecting frontend that works like Whoogle. It is also self-hosteable. Which means that your data is truly under your control. Another issue people often encounter with Invidious is the UI. While it's not the best, I'll be using <a href="https://addons.mozilla.org/en-US/firefox/addon/ff2mpv/"><u>ff2mpv</u></a>, which is a firefox extension that opens every video in MPV.<br>
+                  <br>Start off by cloning the repository<br><br><pre><code class="inlinecode">git clone https://github.com/iv-org/invidious.git</code><br><code>cd invidious</code></pre><br>Next up, edit <code class="inlinecode">docker-compose.yml</code> and add the following:
+                  <br><br><br><pre><code class="codeblock">
+version: "3"
+services:
+
+  invidious:
+    image: quay.io/invidious/invidious:latest
+    # image: quay.io/invidious/invidious:latest-arm64 # ARM64/AArch64 devices
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      # Please read the following file for a comprehensive list of all available
+      # configuration options and their associated syntax:
+      # https://github.com/iv-org/invidious/blob/master/config/config.example.yml
+      INVIDIOUS_CONFIG: |
+        db:
+          dbname: invidious
+          user: kemal
+          password: kemal
+          host: invidious-db
+          port: 5432
+        check_tables: true
+        # external_port:
+        # domain:
+        # https_only: false
+        # statistics_enabled: false
+        hmac_key: "CHANGE_ME!!"
+    healthcheck:
+      test: wget -nv --tries=1 --spider http://127.0.0.1:3000/api/v1/trending || exit 1
+      interval: 30s
+      timeout: 5s
+      retries: 2
+    logging:
+      options:
+        max-size: "1G"
+        max-file: "4"
+    depends_on:
+      - invidious-db
+
+  invidious-db:
+    image: docker.io/library/postgres:14
+    restart: unless-stopped
+    volumes:
+      - postgresdata:/var/lib/postgresql/data
+      - ./config/sql:/config/sql
+      - ./docker/init-invidious-db.sh:/docker-entrypoint-initdb.d/init-invidious-db.sh
+    environment:
+      POSTGRES_DB: invidious
+      POSTGRES_USER: kemal
+      POSTGRES_PASSWORD: kemal
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+
+volumes:
+  postgresdata:
+                  </code></pre>
+
+                  To generate the hmac key, simply use <code class="inlinecode">pwgen 20 1</code> and finally start the server using <code class="inlinecode">docker-compose up</code>.<br><br>
+                  <figure class="image">
+                    <img style="width: 60%;" src="{{ url_for('static',filename='invidious.png') }}">
+                  </figure>Et voila! You now have Invidious working as well. It should be accessible on port 3000 of the IP. Just like Whoogle, I would recommend fiddling around a bit. There are a LOT of options available.
+
+                  </p>
+                <h1 class="has-text-warning">Email</h1><br>
+                <p>I didn't include Emails in today's blog because I already don't use Gmail. But if you do, Tutanota/Protonmail/Cock.li are great alternatives. I personally also use Thunderbird as my email client. 
+                  Another great alternative is to host your own email server. It's a fun weekend project and I might also post it as a blog on here some day.</p>
+
+              </div>    
+            </div>
+            </div>
+        </div>    
+
+
+        </section>
+
+        
+</body>
+</html>

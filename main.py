@@ -10,13 +10,17 @@ def home():
 def about():
     return render_template('about.html')
 
-@app.route('/shenanigans')
-def shenanigans():
-    return render_template('shenanigans.html')
+@app.route('/projects')
+def projects():
+    return render_template('projects.html')
 
 @app.route('/blog')
 def blog():
     return render_template('blog.html')
 
+@app.route('/degoogling-1')
+def degoogling_one():
+    return render_template('degoogling-1.html')
+
 if __name__ == '__main__':
-    app.run(threaded=True)
+    app.run(threaded=True, debug=True)
