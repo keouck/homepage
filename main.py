@@ -1,5 +1,4 @@
 from flask import Flask, render_template
-from waitress import serve
 
 app = Flask(__name__)
 
@@ -24,4 +23,4 @@ def degoogling_one():
     return render_template('degoogling-1.html')
 
 if __name__ == '__main__':
-    serve(app, host='0.0.0.0', port=443)
+    app.run(host='0.0.0.0', debug=False)
