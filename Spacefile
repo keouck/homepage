@@ -1,9 +1,0 @@
-# Spacefile Docs: https://go.deta.dev/docs/spacefile/v0
-v: 0
-icon: ./static/bochi2.png
-app_name: "TuringTested"
-micros:
-  - name: homepage
-    src: ./
-    engine: python3.9
-    public: true
