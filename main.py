@@ -22,5 +22,13 @@ def blog():
 def degoogling_one():
     return render_template('degoogling-1.html')
 
+@app.route("/cv")
+def cv_viewer():
+    return render_template("cv.html")
+
+@app.route("/cv.pdf")
+def cv_pdf():
+    return app.send_static_file("cv/my_cv.pdf")
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=False)
